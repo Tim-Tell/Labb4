@@ -63,7 +63,6 @@ public class CarController {
     }
 
     public void createButtons() {
-
         // Alla Knappar som inte är start och stopp
 
         frame.add(controlPanel);
@@ -94,20 +93,20 @@ public class CarController {
     }
     // GasSnurran skapas här
     public void createGas() {
-
         SpinnerModel spinnerModel = new SpinnerNumberModel(0, //initial value
                         0, //min
                         100, //max
                         1);//step
-
         gasSpinner = new JSpinner(spinnerModel);
-
-
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
         frame.add(gasPanel);
-
+        gasSpinner.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
+            }
+        });
     }
 
 

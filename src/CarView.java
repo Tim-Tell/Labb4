@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 
 public class CarView extends JFrame implements CarObserver{
+
     private static final int X = 800;
     private static final int Y = 800;
 
@@ -29,15 +30,9 @@ public class CarView extends JFrame implements CarObserver{
     // Constructor
     public CarView(String frameName, World world){
         this.world = world;
-
-
     }
 
-    public void repaintFrame (){
-        drawPanel.repaint();
-    }
-
-        public void setArrayList(ArrayList<Cars> cc){
+        public void makeDrawPanel(ArrayList<Cars> cc){
         //carList = cc;
         drawPanel = new DrawPanel(X, Y-240, cc);
     }
@@ -80,20 +75,23 @@ public class CarView extends JFrame implements CarObserver{
         return X;
     }
 
+    public void firstPaintCombonent(){
+        drawPanel.paintComponent();
+    }
+
 
 
     @Override
     public void carObjectChanged() {
-        //System.out.println("car object changed");
-        repaintFrame();
-
+        System.out.println("car object changed");
+        drawPanel.repaint();
     }
 
     public void addObserver (){
-
+    int d=1;
     }
 
     public void removeObserver(){
-
+        int d=2;
     }
 }

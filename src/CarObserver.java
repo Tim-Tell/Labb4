@@ -5,4 +5,9 @@ public interface CarObserver {
     void addObserver();
 
     void removeObserver();
+
+
+    void addObserver();
+
+    void removeObserver();
 }

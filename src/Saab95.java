@@ -3,29 +3,29 @@
 
 import java.awt.*;
 
-public class Saab95 extends Cars{
+public class Saab95 extends Cars {
 
     protected boolean turboOn;
 
-    public Saab95(){
+    public Saab95() {
         super(2, 125, Color.red, "Saab95", "North", 200, 0);
         turboOn = false;
     }
 
-    protected void setTurboOn(){
+    protected void setTurboOn() {
         turboOn = true;
         //carObserver.carObjectChanged();
     }
 
-    protected void setTurboOff(){
+    protected void setTurboOff() {
         turboOn = false;
-        carObserver.carObjectChanged();
+        //carObserver.carObjectChanged();
     }
 
-    public double speedFactor(){
+    public double speedFactor() {
         double turbo = 1;
-        if(turboOn) turbo = 1.3;
+        if (turboOn) turbo = 1.3;
         return geteningePower() * 0.01 * turbo;
     }
+}
 
-}}
