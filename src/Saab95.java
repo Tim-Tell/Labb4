@@ -14,7 +14,8 @@ public class Saab95 extends Cars{
 
     protected void setTurboOn(){
         turboOn = true;
-
+        //carObserver.carObjectChanged();
+    }
 
     protected void setTurboOff(){
         turboOn = false;
