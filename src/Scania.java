@@ -26,6 +26,7 @@ public class Scania extends Cars {
         } else {
             trailerAngle = trailerAngle + amount;
         }
+        carObserver.carObjectChanged();
 
     }
 
@@ -38,6 +39,7 @@ public class Scania extends Cars {
         } else {
             trailerAngle = trailerAngle - amount;
         }
+        carObserver.carObjectChanged();
     }
 
     public double speedFactor() {

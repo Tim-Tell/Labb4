@@ -13,6 +13,7 @@ public abstract class Cars implements Movable{
     private double posY;   // Position Y of the car
     private String direction;  // Direction of the car
 
+    CarObserver carObserver;
 
     public abstract double speedFactor();
 
@@ -28,7 +29,6 @@ public abstract class Cars implements Movable{
         this.posY = posY;
         this.posX = posX;
         stopEngine();
-
     }
 
 
@@ -55,6 +55,7 @@ public abstract class Cars implements Movable{
 
     public void startEngine() {
         currentSpeed = 0.1;
+        carObserver.carObjectChanged();
     }
 
     protected double getEnginePower(){
@@ -71,6 +72,7 @@ public abstract class Cars implements Movable{
 
     protected void stopEngine(){
         currentSpeed = 0;
+        carObserver.carObjectChanged();
     }
 
     protected double getPosX(){
@@ -83,11 +85,14 @@ public abstract class Cars implements Movable{
 
     public void setPosY(double place){
         posY = place;
+        carObserver.carObjectChanged();
     }
 
     public void setPosX(double place){
         posX = place;
+        carObserver.carObjectChanged();
     }
+
 
     public void move() {
         if (posY >= 500) {
@@ -112,7 +117,7 @@ public abstract class Cars implements Movable{
                 posX = posX + currentSpeed;
                 break;
         }
-        CarObserver.carObjectChanged();
+        carObserver.carObjectChanged();
     }
 
     public void turnLeft() {
@@ -131,6 +136,7 @@ public abstract class Cars implements Movable{
                 break;
 
         }
+        carObserver.carObjectChanged();
     }
 
 
@@ -149,6 +155,7 @@ public abstract class Cars implements Movable{
                 direction = "North";
                 break;
         }
+        carObserver.carObjectChanged();
     }
 
 
@@ -160,6 +167,7 @@ public abstract class Cars implements Movable{
             currentSpeed = enginePower;
 
         }
+        carObserver.carObjectChanged();
     }
 
     private void decrementSpeed(double amount){
@@ -170,6 +178,7 @@ public abstract class Cars implements Movable{
             currentSpeed = 0;
 
         }
+        carObserver.carObjectChanged();
     }
 
 

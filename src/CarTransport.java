@@ -17,6 +17,7 @@ public class CarTransport extends Cars {
         } else {
             trailerUp = true;
         }
+        carObserver.carObjectChanged();
     }
 
     public void trailerDown() {
@@ -26,6 +27,7 @@ public class CarTransport extends Cars {
         } else {
             trailerUp = false;
         }
+        carObserver.carObjectChanged();
     }
 
     public int getNrOfCarsInTruck() {
@@ -53,6 +55,7 @@ public class CarTransport extends Cars {
             car.setPosY(this.getPosY());
             car.setPosX(this.getPosX());
         }
+        carObserver.carObjectChanged();
     }
 
     private int checkIfCarIsInList(Cars car) {
@@ -74,6 +77,7 @@ public class CarTransport extends Cars {
             car.setPosY(this.getPosY() + 0.1);
             car.setPosX(this.getPosX() + 0.1);
         }
+        carObserver.carObjectChanged();
     }
 
 
@@ -99,6 +103,7 @@ public class CarTransport extends Cars {
                 carsOnTruck[i].setPosX(this.getPosX());
             }
         }
+       carObserver.carObjectChanged();
     }
 }
 
