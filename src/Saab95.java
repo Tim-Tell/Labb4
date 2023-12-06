@@ -3,7 +3,7 @@
 
 import java.awt.*;
 
-public class Saab95 extends Cars {
+public class Saab95 extends Cars{
 
     protected boolean turboOn;
 
@@ -14,8 +14,7 @@ public class Saab95 extends Cars {
 
     protected void setTurboOn(){
         turboOn = true;
-        carObserver.carObjectChanged();
-    }
+
 
     protected void setTurboOff(){
         turboOn = false;
@@ -28,4 +27,4 @@ public class Saab95 extends Cars {
         return geteningePower() * 0.01 * turbo;
     }
 
-}
+}}

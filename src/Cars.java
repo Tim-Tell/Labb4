@@ -2,9 +2,10 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public abstract class Cars extends World implements Movable{
+public abstract class Cars extends World implements Movable, Subject{
 
 
+    private List<Observer> observers = new ArrayList<>();
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
@@ -33,7 +34,45 @@ public abstract class Cars extends World implements Movable{
     }
 
 
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
 
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update();
+        }
+    }
+
+    // Metod som representerar en händelse i Cars och meddelar observatörerna
+    public void somethingHappened() {
+        // Gör något relevant
+        // ...
+
+        // Meddela observatörerna att något har hänt
+        notifyObservers();
+    }
+}
+    Implementera DrawPanel som en Observer:
+        java
+        Copy code
+    public class DrawPanel implements Observer {
+    // Dina medlemsvariabler och metoder för DrawPanel-klassen
+
+    @Override
+    public void update() {
+        // Uppdatera DrawPanel baserat på förändringar i Cars
+        System.out.println("DrawPanel has been updated!");
+        // Uppdateringslogik här
+    }
+}
     protected int GetnrDoors() {
         return nrDoors;
     }
