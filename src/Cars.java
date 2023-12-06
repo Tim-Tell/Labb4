@@ -1,7 +1,7 @@
 
 import java.awt.*;
 
-public abstract class Cars implements Movable {
+public abstract class Cars implements Movable{
 
 
     private int nrDoors; // Number of doors on the car
@@ -12,6 +12,7 @@ public abstract class Cars implements Movable {
     private double posX;   // Position X of the car
     private double posY;   // Position Y of the car
     private String direction;  // Direction of the car
+
 
     public abstract double speedFactor();
 
@@ -29,6 +30,8 @@ public abstract class Cars implements Movable {
         stopEngine();
 
     }
+
+
 
     protected int GetnrDoors() {
         return nrDoors;
@@ -109,6 +112,7 @@ public abstract class Cars implements Movable {
                 posX = posX + currentSpeed;
                 break;
         }
+        CarObserver.carObjectChanged();
     }
 
     public void turnLeft() {

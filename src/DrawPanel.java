@@ -21,6 +21,8 @@ public class DrawPanel extends JPanel{
     BufferedImage SaabImage;
 
     Map<Cars, BufferedImage> carsMap = new HashMap<>();
+    //ArrayList<Cars> carList;
+
 
     //ArrayList<Point> CarPoints = new ArrayList<Point>();
 
@@ -29,14 +31,8 @@ public class DrawPanel extends JPanel{
     Point carPoint = new Point();
 
 
-
-
-
-
-
-
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y) {
+    public DrawPanel(int x, int y, ArrayList<Cars> carList) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
@@ -51,7 +47,7 @@ public class DrawPanel extends JPanel{
                 volvoImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg")));
                 ScaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
                 SaabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
-                addCars();
+                addCars(carList);
             } catch (IOException ex)
             {
                 ex.printStackTrace();
@@ -60,9 +56,8 @@ public class DrawPanel extends JPanel{
 
     }
 
-    private void addCars(){
-        ArrayList carList = CarController.GetArrayList();
-        for (Cars car : CarController.GetArrayList()) {
+    private void addCars(ArrayList<Cars> carList){
+        for (Cars car : carList) {
             if (car instanceof Saab95) {
                 carsMap.put(car, SaabImage);
             } else if (car instanceof Volvo240) {
@@ -73,6 +68,7 @@ public class DrawPanel extends JPanel{
         }
 
     }
+
 
     // This method is called each time the panel updates/refreshes/repaints itself
     // TODO: Change to suit your needs.
