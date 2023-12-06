@@ -31,7 +31,6 @@ public class CarController {
 
     public void makeDrawPanel(CarView carView) {
         this.frame = carView;
-        carView.setArrayList(cars);
 
         carView.gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
