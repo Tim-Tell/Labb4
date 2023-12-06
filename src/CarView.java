@@ -29,6 +29,7 @@ public class CarView extends JFrame implements CarObserver{
 
     // Constructor
     public CarView(String frameName, World world){
+        this.frameName= frameName;
         this.world = world;
     }
 

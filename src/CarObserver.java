@@ -7,7 +7,4 @@ public interface CarObserver {
     void removeObserver();
 
 
-    void addObserver();
-
-    void removeObserver();
 }

@@ -112,11 +112,7 @@ public class CarController {
 
 
     public void addActionListeners() {
-        gasSpinner.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
-            }
-        });
+
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e){

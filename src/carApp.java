@@ -16,8 +16,11 @@ public class carApp {
         world.cars.add(new Saab95());
 
 
-        carView.setArrayList(world.cars);
-        //cc.makeDrawPanel(carView);
+
+        cc.createButtons();
+        cc.createGas();
+        cc.addActionListeners();
+
         carView.makeComponents();
 
         carView.makeDrawPanel(world.cars);
