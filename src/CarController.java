@@ -11,17 +11,21 @@ import java.awt.event.ActionListener;
  */
 
 
-
 public class CarController {
 
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
+    World world;
 
-    //CarView carView;
+    int gasAmount = 0;
+
+    double trailerAmount = 10;
+
     // A list of cars, modify if needed
 
-    public CarController(){
+    public CarController(World world){
         //makeDrawPanel(frame);
+        this.world = world;
         System.out.println("i am a car controller");
     }
 
@@ -37,21 +41,21 @@ public class CarController {
         carView.gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e){
-                gas(gasAmount);
+                world.gas(gasAmount);
             }
         });
 
         carView.brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e){
-                brake(gasAmount);
+                world.brake(gasAmount);
             }
         });
 
         carView.startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e){
-                startCars();
+                world.startCars();
                 System.out.println("In startButton");
             }
         });
@@ -59,35 +63,35 @@ public class CarController {
         carView.stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e){
-                stopCars();
+                world.stopCars();
             }
         });
 
         carView.turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e){
-                turboOn();
+                world.turboOn();
             }
         });
 
         carView.turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e){
-                turboOff();
+                world.turboOff();
             }
         });
 
         carView.liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e){
-                trailerUp(trailerAmount);
+                world.trailerUp(trailerAmount);
             }
         });
 
         carView.lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e){
-                trailerDown(trailerAmount);
+                world.trailerDown(trailerAmount);
             }
         });
 
@@ -95,38 +99,6 @@ public class CarController {
     }
 
 
-    void turboOn() {
-        for (Cars car : cars) {
-            if (car instanceof Saab95) {
-                ((Saab95) car).setTurboOn();
-            }
-        }
-    }
-
-
-    void turboOff() {
-        for (Cars car : cars) {
-            if (car instanceof Saab95) {
-                ((Saab95) car).setTurboOff();
-            }
-        }
-    }
-
-    void trailerUp(double amount) {
-        for (Cars car : cars) {
-            if (car instanceof Scania) {
-                ((Scania) car).trailerUp(amount);
-            }
-        }
-    }
-
-    void trailerDown(double amount) {
-        for (Cars car : cars) {
-            if (car instanceof Scania) {
-                ((Scania) car).trailerDown(amount);
-            }
-        }
-    }
 
 
 

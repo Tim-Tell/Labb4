@@ -74,6 +74,7 @@ public class DrawPanel extends JPanel{
     // TODO: Change to suit your needs.
     @Override
     protected void paintComponent(Graphics g){
+        System.out.println("im repainting");
         super.paintComponent(g);
         for (Cars car : carsMap.keySet()){
         g.drawImage(carsMap.get(car), (int) car.getPosX(), (int) car.getPosY(), null);// see javadoc for more info on the parameter

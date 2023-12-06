@@ -2,7 +2,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public abstract class Cars implements Movable{
+public abstract class Cars extends World implements Movable{
 
 
     private int nrDoors; // Number of doors on the car
@@ -14,10 +14,11 @@ public abstract class Cars implements Movable{
     private double posY;   // Position Y of the car
     private String direction;  // Direction of the car
 
+    ArrayList<CarObserver> carObserverList = new ArrayList<>();
+
     CarObserver carObserver;
 
     public abstract double speedFactor();
-
 
 
     public Cars(int nrDoors, double enginePower, Color color,
@@ -55,7 +56,7 @@ public abstract class Cars implements Movable{
 
     public void startEngine() {
         currentSpeed = 0.1;
-        carObserver.carObjectChanged();
+        //carObserver.carObjectChanged();
     }
 
     protected double getEnginePower(){
@@ -72,7 +73,7 @@ public abstract class Cars implements Movable{
 
     protected void stopEngine(){
         currentSpeed = 0;
-        carObserver.carObjectChanged();
+        //carObserver.carObjectChanged();
     }
 
     protected double getPosX(){
@@ -85,12 +86,12 @@ public abstract class Cars implements Movable{
 
     public void setPosY(double place){
         posY = place;
-        carObserver.carObjectChanged();
+        //carObserver.carObjectChanged();
     }
 
     public void setPosX(double place){
         posX = place;
-        carObserver.carObjectChanged();
+        //carObserver.carObjectChanged();
     }
 
 
@@ -117,7 +118,7 @@ public abstract class Cars implements Movable{
                 posX = posX + currentSpeed;
                 break;
         }
-        carObserver.carObjectChanged();
+        //carObserver.carObjectChanged();
     }
 
     public void turnLeft() {
@@ -136,7 +137,7 @@ public abstract class Cars implements Movable{
                 break;
 
         }
-        carObserver.carObjectChanged();
+        //carObserver.carObjectChanged();
     }
 
 
@@ -155,7 +156,7 @@ public abstract class Cars implements Movable{
                 direction = "North";
                 break;
         }
-        carObserver.carObjectChanged();
+        //carObserver.carObjectChanged();
     }
 
 
@@ -167,7 +168,7 @@ public abstract class Cars implements Movable{
             currentSpeed = enginePower;
 
         }
-        carObserver.carObjectChanged();
+        //carObserver.carObjectChanged();
     }
 
     private void decrementSpeed(double amount){
@@ -178,7 +179,7 @@ public abstract class Cars implements Movable{
             currentSpeed = 0;
 
         }
-        carObserver.carObjectChanged();
+        //carObserver.carObjectChanged();
     }
 
 

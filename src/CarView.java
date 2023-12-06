@@ -18,8 +18,7 @@ public class CarView extends JFrame implements CarObserver{
     private static final int X = 800;
     private static final int Y = 800;
 
-    String frameName;
-    // The controller member
+    String frameName; // The controller member
     DrawPanel drawPanel;
     JPanel controlPanel = new JPanel();
     JPanel gasPanel = new JPanel();
@@ -120,10 +119,20 @@ public class CarView extends JFrame implements CarObserver{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+
+
     @Override
     public void carObjectChanged() {
         //System.out.println("car object changed");
         repaintFrame();
+
+    }
+
+    public void addObserver (){
+
+    }
+
+    public void removeObserver(){
 
     }
 }

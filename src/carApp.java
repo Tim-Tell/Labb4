@@ -6,15 +6,18 @@ public class carApp {
 
         CarView carView = new CarView("CarSim 1.0");
 
-        CarController cc = new CarController();
+        CarController cc = new CarController(world);
         // Instance of this class
 
-        cc.cars.add(new Volvo240());
-        cc.cars.add(new Scania());
-        cc.cars.add(new Saab95());
+        world.cars.add(new Volvo240());
+        world.cars.add(new Scania());
+        world.cars.add(new Saab95());
 
-        cc.makeDrawPanel(carView);
+        carView.setArrayList(world.cars);
+        //cc.makeDrawPanel(carView);
         carView.makeComponents();
+
+        world.addObserver(carView);
 
 
         // Start a new view and send a reference of self
