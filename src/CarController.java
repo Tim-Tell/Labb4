@@ -3,9 +3,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Collection;
-
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -17,32 +14,15 @@ import java.util.Collection;
 
 public class CarController {
 
-    double trailerAmount = 10;
-    // member fields:
-
-    // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
-    // The timer is started with an listener (see below) that executes the statements
-    // each step between delays.
-    int gasAmount = 0;
-
-
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
 
     //CarView carView;
     // A list of cars, modify if needed
-    protected ArrayList<Cars> cars = new ArrayList<>();
-    Timer timer = new Timer(delay, new CarController.TimerListener());
 
     public CarController(){
         //makeDrawPanel(frame);
         System.out.println("i am a car controller");
-    }
-
-
-    public ArrayList<Cars> GetArrayList(){
-        return cars;
     }
 
     public void makeDrawPanel(CarView carView) {
@@ -113,49 +93,7 @@ public class CarController {
 
 
     }
-    //methods:
 
-    /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
-
-    private class TimerListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            for (Cars car : cars) {
-                car.move();
-                // repaint() calls the paintComponent method of the panel
-                frame.repaintFrame();
-            }
-        }
-    }
-
-    // Calls the gas method for each car once
-    void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Cars car : cars
-                ) {
-            car.gas(gas);
-        }
-    }
-
-    void brake (int amount) {
-        double brake= ((double) amount) / 100;
-        for (Cars car : cars) {
-            car.brake(brake);
-        }
-        }
-
-    void startCars() {
-        for (Cars car : cars) {
-            car.startEngine();
-        }
-    }
-
-    void stopCars() {
-        for (Cars car : cars) {
-           car.stopEngine();
-        }
-    }
 
     void turboOn() {
         for (Cars car : cars) {

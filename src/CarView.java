@@ -18,8 +18,6 @@ public class CarView extends JFrame implements CarObserver{
     private static final int X = 800;
     private static final int Y = 800;
 
-    ArrayList<Cars> carList;
-
     String frameName;
     // The controller member
     DrawPanel drawPanel;
@@ -124,6 +122,8 @@ public class CarView extends JFrame implements CarObserver{
 
     @Override
     public void carObjectChanged() {
+        //System.out.println("car object changed");
         repaintFrame();
+
     }
 }

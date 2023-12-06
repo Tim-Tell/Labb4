@@ -2,6 +2,8 @@ public class carApp {
 
     public static void main(String[] args) {
 
+        World world = new World();
+
         CarView carView = new CarView("CarSim 1.0");
 
         CarController cc = new CarController();
@@ -20,6 +22,6 @@ public class carApp {
 
 
         // Start the timer
-        cc.timer.start();
+        world.timer.start();
     }
 }

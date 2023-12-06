@@ -1,4 +1,8 @@
 public interface CarObserver {
 
-   void carObjectChanged();
+    void carObjectChanged();
+
+    void addObserver();
+
+    void removeObserver();
 }

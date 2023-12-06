@@ -1,5 +1,6 @@
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class Cars implements Movable{
 
@@ -28,7 +29,6 @@ public abstract class Cars implements Movable{
         this.direction = direction;
         this.posY = posY;
         this.posX = posX;
-        stopEngine();
     }
 
 
