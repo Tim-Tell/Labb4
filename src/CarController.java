@@ -32,6 +32,10 @@ public class CarController {
     private JButton lowerBedButton;
     private JButton startButton;
     private JButton stopButton;
+
+    private JButton AddButton;
+
+    private JButton RemoveButton;
     private JPanel controlPanel;
     private JPanel gasPanel = new JPanel();
     private JSpinner gasSpinner = new JSpinner();

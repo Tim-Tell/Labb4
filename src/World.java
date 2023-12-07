@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.util.Random;
 
 public class World {
 
