@@ -22,24 +22,17 @@ public class CarView extends JFrame implements CarObserver{
     DrawPanel drawPanel;
     World world;
 
-
-    double trailerAmount = 10;
-
-
-
     // Constructor
     public CarView(String frameName, World world){
         this.frameName= frameName;
         this.world = world;
     }
 
-        public void makeDrawPanel(ArrayList<Cars> cc){
-        //carList = cc;
-        drawPanel = new DrawPanel(X, Y-240, cc);
-    }
 
-    public void makeComponents(){
+    public void makeComponents(ArrayList<Cars> cc){
+        drawPanel = new DrawPanel(X, Y-240, cc);
         initComponents(frameName);
+
     }
 
 
@@ -51,12 +44,16 @@ public class CarView extends JFrame implements CarObserver{
         this.setPreferredSize(new Dimension(X,Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
+        this.add(drawPanel);
+
 
         // This actionListener is for the gas button only
         // TODO: Create more for each component as necessary
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
+
+
 
         // Get the computer screen resolution
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -84,11 +81,11 @@ public class CarView extends JFrame implements CarObserver{
 
     @Override
     public void carObjectChanged() {
-        System.out.println("car object changed");
         drawPanel.repaint();
     }
 
     public void addObserver (){
+
     int d=1;
     }
 

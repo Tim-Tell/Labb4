@@ -82,20 +82,29 @@ public class World {
             carObserverArrayList.add(observer);
         }
 
+        public void removeObserver(CarObserver observer){
+            for (int x=0; x < carObserverArrayList.size(); x++){
+                if (carObserverArrayList.get(x) == observer){
+                    carObserverArrayList.remove(observer);
+                }
+            }
+        }
+
+        public void notifyObservers(){
+            for (CarObserver carObserver: carObserverArrayList){
+                carObserver.carObjectChanged();
+            }
+        }
+
 
     /* Each step the TimerListener moves all the cars in the list and tells the
-     * view to update its images. Change this method to your needs.
+     * observers to update its images.
      * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Cars car : cars) {
                 car.move();
-                // repaint() calls the paintComponent method of the panel
-                for (CarObserver carObserver: carObserverArrayList){
-                    carObserver.carObjectChanged();
-                }
-                // for observer update observer
-                //flytta detta och knapparna till cars, alltså de under.
+                notifyObservers();
             }
         }
     }

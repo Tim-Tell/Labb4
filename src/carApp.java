@@ -14,15 +14,12 @@ public class carApp {
         world.cars.add(new Scania());
         world.cars.add(new Saab95());
 
-
+        carView.makeComponents(world.cars);
 
         cc.createButtons();
         cc.createGas();
         cc.addActionListeners();
 
-        carView.makeComponents();
-
-        carView.makeDrawPanel(world.cars);
 
         world.addObserver(carView);
 

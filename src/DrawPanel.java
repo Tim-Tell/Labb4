@@ -21,14 +21,8 @@ public class DrawPanel extends JPanel{
     BufferedImage SaabImage;
 
     Map<Cars, BufferedImage> carsMap = new HashMap<>();
-    //ArrayList<Cars> carList;
-
-
-    //ArrayList<Point> CarPoints = new ArrayList<Point>();
 
     // To keep track of a singel cars position
-
-    Point carPoint = new Point();
 
 
     // Initializes the panel and reads the images
@@ -79,6 +73,7 @@ public class DrawPanel extends JPanel{
         super.paintComponent(g);
         for (Cars car : carsMap.keySet()){
         g.drawImage(carsMap.get(car), (int) car.getPosX(), (int) car.getPosY(), null);// see javadoc for more info on the parameter
-    }       }
+        }
     }
+}
 
