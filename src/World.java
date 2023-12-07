@@ -97,54 +97,55 @@ public class World {
             }
         }
 
-    public void addCar(Cars car, String SorR){
+        /* tar emot en string som antingen är en bil ("volvo", "saab", "scania", "car transport")
+        eller något helt annat, är de en bil så läggs den sortens bil till, annars läggs en random bil till
+         */
+        public void addCar(String car){
+            String carToAdd;
 
-        Random rand = new Random();
-        int upperbound = 3;
-        int_random
-
-        if (SorR.equals("Random")){
-            ArrayList<String> potentialCars = new ArrayList<>();
-            potentialCars.add("volvo");
-            potentialCars.add("saab");
-            potentialCars.add("scania");
-            potentialCars.add("car transport");
-
-
-        for (potentialCars: String carCheck){
-            if (carCheck.equals("volvo")){
-                cars.add(new Volvo240());
+            if (car.equals("volvo") || car.equals("saab") || car.equals("scania") || car.equals("car transport")) {
+                carToAdd = car;
             }
-            else if (carCheck.equals("saab")){
-                cars.add(new Saab95());
-            }
-            else if(carCheck.equals("scania")){
-                cars.add(new Scania());
-            }
-             else{
-                cars.add(new CarTransport());
-        }
-        }
+            else {
+                Random rand = new Random();
+                int upperbound = 3;
+                ArrayList<String> potentialCars = new ArrayList<>();
+                potentialCars.add("volvo");
+                potentialCars.add("saab");
+                potentialCars.add("scania");
+                potentialCars.add("car transport");
 
+                // Generate a random number between 0-3 to select a car randomly.
+                int int_random = rand.nextInt(upperbound);
 
-        if (cars.size() ==10 ){
-            System.out.println("Game is full off cars, can't add any more.");
-        }
-        else{
-            cars.add(car);
-        }
-    }
+                // Get the car type from the list using the randomly generated index.
+                carToAdd = potentialCars.get(int_random);
+
+            }
+            switch (carToAdd){
+                case ("volvo"):
+                    cars.add(new Volvo240());
+                    break;
+                case "saab":
+                    cars.add(new Saab95());
+                    break;
+                case "scania":
+                    cars.add(new Scania());
+                    break;
+                default:
+                    cars.add(new CarTransport());
+                    break;
+        }}
+
 
     public void removeCar(Cars car){
         if (cars.isEmpty()){
             System.out.println("Game is empty off cars, can't remove any more.");
         }
-        else{
+        else {
             cars.remove(car);
         }
     }
-
-
 
     /* Each step the TimerListener moves all the cars in the list and tells the
      * observers to update its images.
