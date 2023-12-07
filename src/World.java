@@ -1,3 +1,5 @@
+//import jdk.internal.classfile.BufWriter;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +13,7 @@ public class World {
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 50;
+
     // The timer is started with an listener (see below) that executes the statements
     // each step between delays.
 
@@ -103,6 +106,11 @@ public class World {
         public void addCar(String car){
             String carToAdd;
 
+            if (cars.size() == 10){
+                System.out.println("can't add anymore cars");
+            }
+            else{
+
             if (car.equals("volvo") || car.equals("saab") || car.equals("scania") || car.equals("car transport")) {
                 carToAdd = car;
             }
@@ -135,10 +143,16 @@ public class World {
                 default:
                     cars.add(new CarTransport());
                     break;
-        }}
+
+        }
+            System.out.println("car was added");
+            notifyObservers();
+            }
+        }
 
 
     public void removeCar(Cars car){
+            System.out.println("car was removed");
         if (cars.isEmpty()){
             System.out.println("Game is empty off cars, can't remove any more.");
         }

@@ -32,6 +32,8 @@ public class CarController {
     private JButton lowerBedButton;
     private JButton startButton;
     private JButton stopButton;
+    private JButton addCarsButton;
+    private JButton removeCarsButton;
 
     private JButton AddButton;
 
@@ -59,11 +61,10 @@ public class CarController {
         turboOffButton = new JButton("Turbo Off,");
         liftBedButton = new JButton("Lift Bed");
         lowerBedButton = new JButton("Lower Bed");
+        addCarsButton = new JButton("Add Car");
+        removeCarsButton = new JButton("Remove Car");
 
         gasLabel = new JLabel();
-
-
-        System.out.println("i am a car controller");
     }
 
     public void createButtons() {
@@ -79,6 +80,8 @@ public class CarController {
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(addCarsButton, 6);
+        controlPanel.add(removeCarsButton, 6);
 
         // StartKnapp
 
@@ -135,7 +138,6 @@ public class CarController {
             @Override
             public void actionPerformed (ActionEvent e){
                 world.startCars();
-                System.out.println("In startButton");
             }
         });
 
@@ -171,6 +173,23 @@ public class CarController {
             @Override
             public void actionPerformed (ActionEvent e){
                 world.trailerDown(trailerAmount);
+            }
+        });
+
+        addCarsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed (ActionEvent e){
+                world.addCar("nogot");
+                System.out.println(world.cars);
+                // lägg till nya bilen i cars hashmapen. (detta kanske fixas i carObjectChanged nu?)
+            }
+        });
+
+        removeCarsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed (ActionEvent e){
+                Cars carToRemove= world.cars.get(0);
+                world.removeCar(carToRemove);
             }
         });
 

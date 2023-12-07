@@ -77,14 +77,34 @@ public class CarView extends JFrame implements CarObserver{
     @Override
     public void carObjectChanged() {
         drawPanel.repaint();
+
+        //försöker få carObjectChanged att lägga till / ta bort nyckel och värde från cars hashmapen i drawpanel
+        //så att de matchar listan av cars i world och därmed målar upp
+        // rätt bilar som finns / tar bort de bilar som inte gör det
+
+        if (world.cars.size() < drawPanel.carsMap.size()) {
+            for (Cars carMaybeToAdd : world.cars) {
+                if (!drawPanel.carsMap.containsKey(carMaybeToAdd)) {
+                    drawPanel.carsMap.put(carMaybeToAdd, drawPanel.getImage(carMaybeToAdd)); // Lägg till värdet som du behöver
+                }
+            }
+        }
+        else if (world.cars.size() > drawPanel.carsMap.size()){
+            int x = 0;
+            for (Cars carMaybeToAdd : world.cars) {
+                if (drawPanel.carsMap.containsKey(carMaybeToAdd) && carMaybeToAdd.equals(drawPanel.carsMap.get(carMaybeToAdd))){
+                    drawPanel.carsMap.remove(carMaybeToAdd);
+                    x = x + 1;
+                }
+            }
+            /*Iterator<Map.Entry<Cars, Object>> iterator = drawPanel.carsMap.entrySet().iterator();
+while (iterator.hasNext()) {
+    Map.Entry<Cars, Object> entry = iterator.next();
+    Cars carMaybeToAdd = entry.getKey();
+    if (world.cars.contains(carMaybeToAdd)) {
+        iterator.remove();
     }
-
-    public void addObserver (){
-
-    int d=1;
-    }
-
-    public void removeObserver(){
-        int d=2;
+} //pappa skrev detta*/
+        }
     }
 }

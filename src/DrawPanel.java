@@ -27,7 +27,6 @@ public class DrawPanel extends JPanel{
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y, ArrayList<Cars> carList) {
-        System.out.println("drawpanel made");
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
@@ -40,8 +39,8 @@ public class DrawPanel extends JPanel{
                 // if you are starting in IntelliJ.
 
                 volvoImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg")));
-                ScaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
-                SaabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
+                ScaniaImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Scania.jpg")));
+                SaabImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg")));
                 addCars(carList);
             } catch (IOException ex)
             {
@@ -49,6 +48,18 @@ public class DrawPanel extends JPanel{
             }
         }
 
+    }
+
+    public BufferedImage getImage(Cars car){
+        //returnera rätt image, nu får alla volvoImage
+        try{
+            this.setDoubleBuffered(true);
+            volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
+        }
+        catch(IOException ex){
+            ex.printStackTrace();
+        }
+        return volvoImage;
     }
 
     private void addCars(ArrayList<Cars> carList){
@@ -69,7 +80,6 @@ public class DrawPanel extends JPanel{
     // TODO: Change to suit your needs.
     @Override
     protected void paintComponent(Graphics g){
-        System.out.println("im repainting");
         super.paintComponent(g);
         for (Cars car : carsMap.keySet()){
         g.drawImage(carsMap.get(car), (int) car.getPosX(), (int) car.getPosY(), null);// see javadoc for more info on the parameter
