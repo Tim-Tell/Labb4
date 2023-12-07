@@ -76,9 +76,9 @@ public class CarView extends JFrame implements CarObserver{
         return X;
     }
 
-    public void firstPaintCombonent(){
-        drawPanel.paintComponent();
-    }
+ //   public void firstPaintCombonent(){
+  //      drawPanel.paint();
+ //   }
 
 
 

@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 
 public class carApp {
 
@@ -9,7 +9,6 @@ public class carApp {
         CarView carView = new CarView("CarSim 1.0", world);
 
         CarController cc = new CarController(world, carView);
-        // Instance of this class
 
         world.cars.add(new Volvo240());
         world.cars.add(new Scania());
