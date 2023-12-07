@@ -97,6 +97,54 @@ public class World {
             }
         }
 
+    public void addCar(Cars car, String SorR){
+
+        Random rand = new Random();
+        int upperbound = 3;
+        int_random
+
+        if (SorR.equals("Random")){
+            ArrayList<String> potentialCars = new ArrayList<>();
+            potentialCars.add("volvo");
+            potentialCars.add("saab");
+            potentialCars.add("scania");
+            potentialCars.add("car transport");
+
+
+        for (potentialCars: String carCheck){
+            if (carCheck.equals("volvo")){
+                cars.add(new Volvo240());
+            }
+            else if (carCheck.equals("saab")){
+                cars.add(new Saab95());
+            }
+            else if(carCheck.equals("scania")){
+                cars.add(new Scania());
+            }
+             else{
+                cars.add(new CarTransport());
+        }
+        }
+
+
+        if (cars.size() ==10 ){
+            System.out.println("Game is full off cars, can't add any more.");
+        }
+        else{
+            cars.add(car);
+        }
+    }
+
+    public void removeCar(Cars car){
+        if (cars.isEmpty()){
+            System.out.println("Game is empty off cars, can't remove any more.");
+        }
+        else{
+            cars.remove(car);
+        }
+    }
+
+
 
     /* Each step the TimerListener moves all the cars in the list and tells the
      * observers to update its images.
