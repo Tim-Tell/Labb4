@@ -174,3 +174,4 @@ public class World {
     }
 
 }
+// funkar att pusha nu?
