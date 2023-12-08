@@ -150,7 +150,6 @@ public class World {
             }
         }
 
-
     public void removeCar(Cars car){
             System.out.println("car was removed");
         if (cars.isEmpty()){
@@ -158,9 +157,9 @@ public class World {
         }
         else {
             cars.remove(car);
+            System.out.println(cars);
         }
     }
-
     /* Each step the TimerListener moves all the cars in the list and tells the
      * observers to update its images.
      * */
@@ -172,6 +171,4 @@ public class World {
             }
         }
     }
-
 }
-// funkar att pusha nu?

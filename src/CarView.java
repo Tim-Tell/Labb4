@@ -2,6 +2,7 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 
 
 
-public class CarView extends JFrame implements CarObserver{
+public class CarView extends JFrame implements CarObserver {
 
     private static final int X = 800;
     private static final int Y = 800;
@@ -23,14 +24,14 @@ public class CarView extends JFrame implements CarObserver{
     World world;
 
     // Constructor
-    public CarView(String frameName, World world){
-        this.frameName= frameName;
+    public CarView(String frameName, World world) {
+        this.frameName = frameName;
         this.world = world;
     }
 
 
-    public void makeComponents(ArrayList<Cars> cc){
-        drawPanel = new DrawPanel(X, Y-240, cc);
+    public void makeComponents(ArrayList<Cars> cc) {
+        drawPanel = new DrawPanel(X, Y - 240, cc);
         initComponents(frameName);
 
     }
@@ -41,7 +42,7 @@ public class CarView extends JFrame implements CarObserver{
     private void initComponents(String title) {
 
         this.setTitle(title);
-        this.setPreferredSize(new Dimension(X,Y));
+        this.setPreferredSize(new Dimension(X, Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
@@ -54,11 +55,10 @@ public class CarView extends JFrame implements CarObserver{
         this.pack();
 
 
-
         // Get the computer screen resolution
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         // Center the frame
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         // Make the frame visible
         this.setVisible(true);
         // Make sure the frame exits when "x" is pressed
@@ -73,38 +73,28 @@ public class CarView extends JFrame implements CarObserver{
         return X;
     }
 
-
     @Override
     public void carObjectChanged() {
-        drawPanel.repaint();
 
-        //försöker få carObjectChanged att lägga till / ta bort nyckel och värde från cars hashmapen i drawpanel
-        //så att de matchar listan av cars i world och därmed målar upp
-        // rätt bilar som finns / tar bort de bilar som inte gör det
-
+        if (world.cars == null){
+            drawPanel.carsMap.clear();
+            //drawPanel.repaint();
+        }
         if (world.cars.size() < drawPanel.carsMap.size()) {
-            for (Cars carMaybeToAdd : world.cars) {
-                if (!drawPanel.carsMap.containsKey(carMaybeToAdd)) {
-                    drawPanel.carsMap.put(carMaybeToAdd, drawPanel.getImage(carMaybeToAdd)); // Lägg till värdet som du behöver
+            drawPanel.carsMap.clear();
+            drawPanel.addCars(world.cars);
+            //drawPanel.repaint();
+        }
+        else if (world.cars.size() > drawPanel.carsMap.size()) {
+            for (Cars car : world.cars) {
+                if (drawPanel.carsMap.get(car) == null) {
+                    drawPanel.addNewCar(car);
+
                 }
             }
         }
-        else if (world.cars.size() > drawPanel.carsMap.size()){
-            int x = 0;
-            for (Cars carMaybeToAdd : world.cars) {
-                if (drawPanel.carsMap.containsKey(carMaybeToAdd) && carMaybeToAdd.equals(drawPanel.carsMap.get(carMaybeToAdd))){
-                    drawPanel.carsMap.remove(carMaybeToAdd);
-                    x = x + 1;
-                }
-            }
-            /*Iterator<Map.Entry<Cars, Object>> iterator = drawPanel.carsMap.entrySet().iterator();
-while (iterator.hasNext()) {
-    Map.Entry<Cars, Object> entry = iterator.next();
-    Cars carMaybeToAdd = entry.getKey();
-    if (world.cars.contains(carMaybeToAdd)) {
-        iterator.remove();
-    }
-} //pappa skrev detta*/
-        }
+    drawPanel.repaint();
     }
 }
+
+

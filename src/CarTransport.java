@@ -8,7 +8,7 @@ public class CarTransport extends Cars {
     Cars[] carsOnTruck = new Cars[3];
 
     public CarTransport() {
-        super(2, 100, Color.green, "Car Transport", "North", 0, 0);
+        super(2, 100, Color.green, "Car Transport", "North", 0, 300);
     }
 
     public void trailerUp() {

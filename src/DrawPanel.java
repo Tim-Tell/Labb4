@@ -19,6 +19,7 @@ public class DrawPanel extends JPanel{
     BufferedImage volvoImage;
     BufferedImage ScaniaImage;
     BufferedImage SaabImage;
+    BufferedImage carTransportImage;
 
     Map<Cars, BufferedImage> carsMap = new HashMap<>();
 
@@ -41,6 +42,7 @@ public class DrawPanel extends JPanel{
                 volvoImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg")));
                 ScaniaImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Scania.jpg")));
                 SaabImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg")));
+                carTransportImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream("pics/Scania.jpg")));
                 addCars(carList);
             } catch (IOException ex)
             {
@@ -62,7 +64,7 @@ public class DrawPanel extends JPanel{
         return volvoImage;
     }
 
-    private void addCars(ArrayList<Cars> carList){
+    protected void addCars(ArrayList<Cars> carList){
         for (Cars car : carList) {
             if (car instanceof Saab95) {
                 carsMap.put(car, SaabImage);
@@ -75,15 +77,36 @@ public class DrawPanel extends JPanel{
 
     }
 
+    protected void addNewCar(Cars car){{
+            if (car instanceof Saab95) {
+                carsMap.put(car, SaabImage);
+            } else if (car instanceof Volvo240) {
+                carsMap.put(car, volvoImage);
+            } else if (car instanceof Scania) {
+                carsMap.put(car, ScaniaImage);
+            }
+            else if (car instanceof CarTransport) {
+                carsMap.put(car, carTransportImage);
+            }
+        }
+
+    }
+
 
     // This method is called each time the panel updates/refreshes/repaints itself
     // TODO: Change to suit your needs.
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
-        for (Cars car : carsMap.keySet()){
-        g.drawImage(carsMap.get(car), (int) car.getPosX(), (int) car.getPosY(), null);// see javadoc for more info on the parameter
-        }
+        if (carsMap == null) {
+                System.out.println("är i carsmap, i paintcomonent");
+                this.setDoubleBuffered(true);
+                this.setPreferredSize(new Dimension(800, 800));
+                this.setBackground(Color.green);}
+        else{
+            for (Cars car : carsMap.keySet()){
+            g.drawImage(carsMap.get(car), (int) car.getPosX(), (int) car.getPosY(), null);}
     }
-}
+    }
+    }
 
