@@ -99,14 +99,13 @@ public class DrawPanel extends JPanel{
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         if (carsMap == null) {
-                System.out.println("är i carsmap, i paintcomonent");
                 this.setDoubleBuffered(true);
                 this.setPreferredSize(new Dimension(800, 800));
                 this.setBackground(Color.green);}
         else{
             for (Cars car : carsMap.keySet()){
             g.drawImage(carsMap.get(car), (int) car.getPosX(), (int) car.getPosY(), null);}
+        }
     }
-    }
-    }
+}
 

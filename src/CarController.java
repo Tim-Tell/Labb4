@@ -188,9 +188,15 @@ public class CarController {
         removeCarsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e){
-                if (world.cars.isEmpty()){
-                    System.out.println("can't remove any more cars");
-            }else{
+                if (world.cars.isEmpty()) {
+                    world.notifyObservers();
+                }
+                else if (world.cars.size() == 1){
+                    Cars carToRemove = world.cars.get(0);
+                    world.removeCar(carToRemove);
+                    world.notifyObservers();
+                }
+                else {
                     Cars carToRemove = world.cars.get(0);
                     world.removeCar(carToRemove);
                 }

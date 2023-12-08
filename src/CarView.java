@@ -76,10 +76,6 @@ public class CarView extends JFrame implements CarObserver {
     @Override
     public void carObjectChanged() {
 
-        if (world.cars == null){
-            drawPanel.carsMap.clear();
-            //drawPanel.repaint();
-        }
         if (world.cars.size() < drawPanel.carsMap.size()) {
             drawPanel.carsMap.clear();
             drawPanel.addCars(world.cars);
