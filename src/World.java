@@ -116,7 +116,7 @@ public class World {
             }
             else {
                 Random rand = new Random();
-                int upperbound = 3;
+                int upperbound = 4;
                 ArrayList<String> potentialCars = new ArrayList<>();
                 potentialCars.add("volvo");
                 potentialCars.add("saab");
@@ -140,7 +140,7 @@ public class World {
                 case "scania":
                     cars.add(new Scania());
                     break;
-                default:
+                case "car transport":
                     cars.add(new CarTransport());
                     break;
 
