@@ -53,7 +53,6 @@ public abstract class Cars extends World implements Movable{
 
     public void startEngine() {
         currentSpeed = 0.1;
-        //carObserver.carObjectChanged();
     }
 
     protected double getEnginePower(){
@@ -70,7 +69,6 @@ public abstract class Cars extends World implements Movable{
 
     protected void stopEngine(){
         currentSpeed = 0;
-        //carObserver.carObjectChanged();
     }
 
     protected double getPosX(){
@@ -83,12 +81,10 @@ public abstract class Cars extends World implements Movable{
 
     public void setPosY(double place){
         posY = place;
-        //carObserver.carObjectChanged();
     }
 
     public void setPosX(double place){
         posX = place;
-        //carObserver.carObjectChanged();
     }
 
 
@@ -115,7 +111,6 @@ public abstract class Cars extends World implements Movable{
                 posX = posX + currentSpeed;
                 break;
         }
-        //carObserver.carObjectChanged();
     }
 
     public void turnLeft() {
@@ -132,9 +127,7 @@ public abstract class Cars extends World implements Movable{
             case "East":
                 direction =  "North";
                 break;
-
         }
-        //carObserver.carObjectChanged();
     }
 
 
@@ -153,7 +146,6 @@ public abstract class Cars extends World implements Movable{
                 direction = "North";
                 break;
         }
-        //carObserver.carObjectChanged();
     }
 
 
@@ -165,7 +157,6 @@ public abstract class Cars extends World implements Movable{
             currentSpeed = enginePower;
 
         }
-        //carObserver.carObjectChanged();
     }
 
     private void decrementSpeed(double amount){
@@ -176,7 +167,6 @@ public abstract class Cars extends World implements Movable{
             currentSpeed = 0;
 
         }
-        //carObserver.carObjectChanged();
     }
 
 

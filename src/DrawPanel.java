@@ -13,8 +13,6 @@ import java.util.Objects;
 
 public class DrawPanel extends JPanel{
 
-    // Just a single image, TODO: Generalize
-
 
     BufferedImage volvoImage;
     BufferedImage ScaniaImage;
@@ -65,19 +63,6 @@ public class DrawPanel extends JPanel{
         return volvoImage;
     }
 
-    protected void addCars(ArrayList<Cars> carList){
-        for (Cars car : carList) {
-            if (car instanceof Saab95) {
-                carsMap.put(car, SaabImage);
-            } else if (car instanceof Volvo240) {
-                carsMap.put(car, volvoImage);
-            } else if (car instanceof Scania) {
-                carsMap.put(car, ScaniaImage);
-            }
-        }
-
-    }
-
     protected void addNewCar(Cars car){{
             if (car instanceof Saab95) {
                 carsMap.put(car, SaabImage);
@@ -95,7 +80,6 @@ public class DrawPanel extends JPanel{
 
 
     // This method is called each time the panel updates/refreshes/repaints itself
-    // TODO: Change to suit your needs.
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);

@@ -68,7 +68,7 @@ public class CarController {
     }
 
     public void createButtons() {
-        // Alla Knappar som inte är start och stopp
+        // Alla Knappar som inte är start och stop
 
         frame.add(controlPanel);
         controlPanel.setLayout(new GridLayout(2,4));

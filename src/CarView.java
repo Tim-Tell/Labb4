@@ -9,7 +9,6 @@ import java.util.Set;
  * It initializes with being center on the screen and attaching it's controller in it's state.
  * It communicates with the Controller by calling methods of it when an action fires of in
  * each of it's components.
- * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
 
@@ -38,7 +37,6 @@ public class CarView extends JFrame implements CarObserver {
 
 
     // Sets everything in place and fits everything
-    // TODO: Take a good look and make sure you understand how these methods and components work
     private void initComponents(String title) {
 
         this.setTitle(title);
@@ -47,9 +45,7 @@ public class CarView extends JFrame implements CarObserver {
 
         this.add(drawPanel);
 
-
         // This actionListener is for the gas button only
-        // TODO: Create more for each component as necessary
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();

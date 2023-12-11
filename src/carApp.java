@@ -20,7 +20,6 @@ public class carApp {
         cc.createGas();
         cc.addActionListeners();
 
-
         world.addObserver(carView);
 
         // Start a new view and send a reference of self

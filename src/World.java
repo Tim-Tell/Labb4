@@ -1,5 +1,3 @@
-//import jdk.internal.classfile.BufWriter;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +12,7 @@ public class World {
     // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 50;
 
-    // The timer is started with an listener (see below) that executes the statements
+    // The timer is started with a listener (see below) that executes the statements
     // each step between delays.
 
     protected ArrayList<Cars> cars = new ArrayList<>();
@@ -69,6 +67,9 @@ public class World {
                 if (car instanceof Scania) {
                     ((Scania) car).trailerUp(amount);
                 }
+                else if (car instanceof CarTransport){
+                    ((CarTransport) car).trailerUp();
+                }
             }
         }
 
@@ -77,6 +78,9 @@ public class World {
                 if (car instanceof Scania) {
                     ((Scania) car).trailerDown(amount);
                 }
+                else if (car instanceof CarTransport){
+                    ((CarTransport) car).trailerDown();
+            }
             }
         }
 
@@ -121,12 +125,9 @@ public class World {
                 potentialCars.add("scania");
                 potentialCars.add("car transport");
 
-                // Generate a random number between 0-3 to select a car randomly.
                 int int_random = rand.nextInt(upperbound);
 
-                // Get the car type from the list using the randomly generated index.
                 carToAdd = potentialCars.get(int_random);
-
             }
             switch (carToAdd){
                 case ("volvo"):
@@ -141,9 +142,7 @@ public class World {
                 case "car transport":
                     cars.add(new CarTransport());
                     break;
-
         }
-            System.out.println("car was added");
             notifyObservers();
             }
         }
@@ -155,7 +154,7 @@ public class World {
         }
         else {
             cars.remove(car);
-            System.out.println(cars);
+
         }
     }
     /* Each step the TimerListener moves all the cars in the list and tells the

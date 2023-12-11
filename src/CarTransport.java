@@ -17,13 +17,11 @@ public class CarTransport extends Cars {
         } else {
             trailerUp = true;
         }
-        //carObserver.carObjectChanged();
     }
 
     public void trailerDown() {
         if (this.getCurrentSpeed() != 0) {
             System.out.println("Can't move trailer when Truck is in moving");
-
         } else {
             trailerUp = false;
         }
@@ -34,13 +32,10 @@ public class CarTransport extends Cars {
         int x = 0;
         for (int i = 0; i < carsOnTruck.length; i++) {
             if (carsOnTruck[i] != null) {
-
                 x = x + 1;
             }
         }
         return x;
-
-
     }
 
     public void loadCar(Cars car) {
@@ -55,7 +50,6 @@ public class CarTransport extends Cars {
             car.setPosY(this.getPosY());
             car.setPosX(this.getPosX());
         }
-        //carObserver.carObjectChanged();
     }
 
     private int checkIfCarIsInList(Cars car) {
@@ -77,7 +71,6 @@ public class CarTransport extends Cars {
             car.setPosY(this.getPosY() + 0.1);
             car.setPosX(this.getPosX() + 0.1);
         }
-        //carObserver.carObjectChanged();
     }
 
 
@@ -96,14 +89,11 @@ public class CarTransport extends Cars {
             System.out.println("Truck cant move when the trailer is down");
         } else {
             super.move();
-            System.out.println("truck moved");
             for (int i = 0; i < getNrOfCarsInTruck(); i++) {
-
                 carsOnTruck[i].setPosY(this.getPosY());
                 carsOnTruck[i].setPosX(this.getPosX());
             }
         }
-       //carObserver.carObjectChanged();
     }
 }
 
