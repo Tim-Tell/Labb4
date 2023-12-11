@@ -21,8 +21,6 @@ public class World {
     Timer timer = new Timer(delay, new World.TimerListener());
     ArrayList<CarObserver> carObserverArrayList = new ArrayList<>();
 
-    public World (){}
-
         void gas(int amount) {
             double gas = ((double) amount) / 100;
             for (Cars car : cars) {

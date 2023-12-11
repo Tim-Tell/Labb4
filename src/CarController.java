@@ -181,7 +181,6 @@ public class CarController {
             public void actionPerformed (ActionEvent e){
                 world.addCar("nogot");
                 System.out.println(world.cars);
-                // lägg till nya bilen i cars hashmapen. (detta kanske fixas i carObjectChanged nu?)
             }
         });
 

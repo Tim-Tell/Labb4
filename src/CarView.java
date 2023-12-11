@@ -78,8 +78,8 @@ public class CarView extends JFrame implements CarObserver {
 
         if (world.cars.size() < drawPanel.carsMap.size()) {
             drawPanel.carsMap.clear();
-            drawPanel.addCars(world.cars);
-            //drawPanel.repaint();
+            for (Cars car : world.cars){
+                drawPanel.addNewCar(car);}
         }
         else if (world.cars.size() > drawPanel.carsMap.size()) {
             for (Cars car : world.cars) {
